@@ -24,7 +24,7 @@ dependencies {
 
 # History
 
-###### version 0.1.0 13/08/2018
+###### version 0.1.0 14/08/2018
 
 First release
 
