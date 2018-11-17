@@ -30,4 +30,17 @@ ext {
     MIN_SDK_VERSION = 14  // TODO remove support and bring this down as low as possible
     TARGET_SDK_VERSION = 28
     ANDROID_COMPILE_SDK_VERSION = 28
+
+    // retrofit
+    RETROFIT_VERSION = "2.2.0"
+    OK_HTTP_LOGGING_INTERCEPTOR = '3.5.0'
+
+    // rx
+    RX_JAVA_VERSION = "2.1.0"
+    RX_ANDROID_VERSION = "2.0.2"
+
+    // test
+    JUNIT_VERSION = '4.12'
+    ANDROIDX_TESTRUNNER_VERSION = '1.1.0'
+    ANDROIDX_ESPRESSO_VERSION = '3.1.0'
 }
