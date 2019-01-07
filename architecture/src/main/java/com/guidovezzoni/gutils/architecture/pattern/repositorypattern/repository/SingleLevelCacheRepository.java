@@ -1,18 +1,24 @@
-package com.guidovezzoni.gutils.architecture.pattern.repository.repository;
+package com.guidovezzoni.gutils.architecture.pattern.repositorypattern.repository;
 
 
+import com.guidovezzoni.gutils.architecture.pattern.repositorypattern.datasource.CacheDataSource;
+import com.guidovezzoni.gutils.architecture.pattern.repositorypattern.datasource.DataSource;
 import com.guidovezzoni.gutils.architecture.util.TimeStampedData;
-import com.guidovezzoni.gutils.architecture.pattern.repository.datasource.CacheDataSource;
-import com.guidovezzoni.gutils.architecture.pattern.repository.datasource.DataSource;
 
 import io.reactivex.Single;
 
+/**
+ * Repository Pattern, with one level of cache
+ *
+ * @param <M> data model
+ * @param <P> parameters required for obtaining the appropriate data
+ */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class BaseCachedRepository<M, P> implements Repository<M, P> {
+public class SingleLevelCacheRepository<M, P> implements Repository<M, P> {
     protected final DataSource<M, P> networkDataSource;
     protected final CacheDataSource<M, P> cacheDataSource;
 
-    public BaseCachedRepository(DataSource<M, P> networkDataSource, CacheDataSource<M, P> cacheDataSource) {
+    public SingleLevelCacheRepository(DataSource<M, P> networkDataSource, CacheDataSource<M, P> cacheDataSource) {
         this.networkDataSource = networkDataSource;
         this.cacheDataSource = cacheDataSource;
     }

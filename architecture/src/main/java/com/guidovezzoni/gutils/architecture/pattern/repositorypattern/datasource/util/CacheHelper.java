@@ -1,4 +1,4 @@
-package com.guidovezzoni.gutils.architecture.pattern.repository.datasource.util;
+package com.guidovezzoni.gutils.architecture.pattern.repositorypattern.datasource.util;
 
 /**
  * The main reason for this class is to extract some internal logic and unit test it separately.

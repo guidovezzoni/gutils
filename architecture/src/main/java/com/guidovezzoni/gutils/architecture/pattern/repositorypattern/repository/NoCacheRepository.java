@@ -1,16 +1,22 @@
-package com.guidovezzoni.gutils.architecture.pattern.repository.repository;
+package com.guidovezzoni.gutils.architecture.pattern.repositorypattern.repository;
 
 
+import com.guidovezzoni.gutils.architecture.pattern.repositorypattern.datasource.DataSource;
 import com.guidovezzoni.gutils.architecture.util.TimeStampedData;
-import com.guidovezzoni.gutils.architecture.pattern.repository.datasource.DataSource;
 
 import io.reactivex.Single;
 
+/**
+ * Basic version of Repository Pattern, with no cache
+ *
+ * @param <M> data model
+ * @param <P> parameters required for obtaining the appropriate data
+ */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class BaseRepository<M, P> implements Repository<M, P> {
+public class NoCacheRepository<M, P> implements Repository<M, P> {
     protected final DataSource<M, P> networkDataSource;
 
-    public BaseRepository(DataSource<M, P> networkDataSource) {
+    public NoCacheRepository(DataSource<M, P> networkDataSource) {
         this.networkDataSource = networkDataSource;
     }
 

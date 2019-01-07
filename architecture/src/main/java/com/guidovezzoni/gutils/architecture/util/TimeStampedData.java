@@ -1,6 +1,6 @@
 package com.guidovezzoni.gutils.architecture.util;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class TimeStampedData<M> {
 
     private final M model;
@@ -14,6 +14,14 @@ public class TimeStampedData<M> {
     public TimeStampedData(M model) {
         this.model = model;
         this.timestamp = System.currentTimeMillis();
+    }
+
+    public static <T> TimeStampedData<T> of(T t) {
+        return new TimeStampedData<>(t);
+    }
+
+    public static <T> TimeStampedData<T> of(T t, Long timestamp) {
+        return new TimeStampedData<>(t, timestamp);
     }
 
     public M getModel() {

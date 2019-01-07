@@ -7,6 +7,12 @@ import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.subjects.BehaviorSubject;
 
+/**
+ * Provides basic functionalities to the AndroidX {@link androidx.lifecycle.ViewModel}
+ *
+ * @param <M> data model
+ * @param <P> parameters required for obtaining the appropriate data
+ */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class BaseViewModel<M, P> extends androidx.lifecycle.ViewModel implements ViewModel<M, P> {
     protected final Service<M, P> service;

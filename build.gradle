@@ -47,6 +47,7 @@ ext {
 
     // test
     JUNIT_VERSION = '4.12'
+    MOCKITO_VERSION = '2.13.0'
     ANDROIDX_TESTRUNNER_VERSION = '1.1.0'
     ANDROIDX_ESPRESSO_VERSION = '3.1.0'
 }

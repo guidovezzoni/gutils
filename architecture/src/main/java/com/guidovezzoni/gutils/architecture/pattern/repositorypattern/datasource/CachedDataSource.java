@@ -1,8 +1,8 @@
-package com.guidovezzoni.gutils.architecture.pattern.repository.datasource;
+package com.guidovezzoni.gutils.architecture.pattern.repositorypattern.datasource;
 
 
 import com.fernandocejas.arrow.checks.Preconditions;
-import com.guidovezzoni.gutils.architecture.pattern.repository.datasource.util.CacheHelper;
+import com.guidovezzoni.gutils.architecture.pattern.repositorypattern.datasource.util.CacheHelper;
 import com.guidovezzoni.gutils.architecture.util.TimeStampedData;
 
 import java.util.concurrent.TimeUnit;
@@ -15,7 +15,7 @@ import io.reactivex.Maybe;
  * @implNote parameters are ignored for now. It will require some sort of handling via HashMap.
  */
 @SuppressWarnings({"unused", "WeakerAccess"})
-public class BaseCacheDataSource<M, P> implements CacheDataSource<M, P> {
+public class CachedDataSource<M, P> implements CacheDataSource<M, P> {
     private static final long DEFAULT_CACHE_VALIDITY = TimeUnit.MINUTES.toMillis(5);
 
     private TimeStampedData<M> cachedValue;
@@ -23,7 +23,7 @@ public class BaseCacheDataSource<M, P> implements CacheDataSource<M, P> {
     private final CacheHelper cacheHelper;
     private long cacheValidity;
 
-    public BaseCacheDataSource(CacheHelper cacheHelper) {
+    public CachedDataSource(CacheHelper cacheHelper) {
         this.cacheHelper = cacheHelper;
         cacheValidity = DEFAULT_CACHE_VALIDITY;
         invalidateCache();
