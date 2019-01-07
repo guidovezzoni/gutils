@@ -6,6 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ApiHandler<A> {
     private final Class<A> serviceApiClass;
     private final String baseUrl;
@@ -16,9 +17,13 @@ public class ApiHandler<A> {
     }
 
     public A getService() {
+        return getService(HttpLoggingInterceptor.Level.NONE);
+    }
+
+    public A getService(HttpLoggingInterceptor.Level level) {
         OkHttpClient okHttpClient = new OkHttpClient
                 .Builder()
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(level))
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
