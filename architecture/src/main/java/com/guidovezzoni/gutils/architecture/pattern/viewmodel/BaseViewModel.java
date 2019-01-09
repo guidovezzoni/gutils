@@ -8,7 +8,8 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.subjects.BehaviorSubject;
 
 /**
- * Provides basic functionalities to the AndroidX {@link androidx.lifecycle.ViewModel}
+ * Adds some basic functionalities to the AndroidX {@link androidx.lifecycle.ViewModel}:
+ * * an Observable for loading a spinner during the main request
  *
  * @param <M> data model
  * @param <P> parameters required for obtaining the appropriate data
@@ -30,6 +31,7 @@ public class BaseViewModel<M, P> extends androidx.lifecycle.ViewModel implements
         return service.get(params)
                 .doOnSubscribe(disposable -> loadingSubject.onNext(true))
                 .doOnSuccess(tvShows -> loadingSubject.onNext(false));
+        //TODO what if it fails? -> check with unit test
     }
 
     @NonNull
