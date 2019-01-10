@@ -16,69 +16,56 @@ public class Tuple4Test {
 
     @Test
     public void whenGetItem0ThenReturnFirst() {
-        assertThat(sut.getItem(0))
+        assertThat(sut.getItem0())
                 .isEqualTo("first");
     }
 
     @Test
     public void whenGetItem1ThenReturnFirst() {
-        assertThat(sut.getItem(1))
+        assertThat(sut.getItem1())
                 .isEqualTo(16);
     }
 
     @Test
     public void whenGetItem2ThenReturnThird() {
-        assertThat(sut.getItem(2))
+        assertThat(sut.getItem2())
                 .isEqualTo(true);
     }
 
     @Test
     public void whenGetItem3ThenReturnThird() {
-        assertThat(sut.getItem(3))
+        assertThat(sut.getItem3())
+                .isEqualTo(13.49);
+    }
+
+    @Test
+    public void whenGetItemWith0ThenReturnFirst() {
+        assertThat((String) sut.getItem(0))
+                .isEqualTo("first");
+    }
+
+    @Test
+    public void whenGetItemWith1ThenReturnFirst() {
+        assertThat((Integer) sut.getItem(1))
+                .isEqualTo(16);
+    }
+
+    @Test
+    public void whenGetItemWith2ThenReturnThird() {
+        assertThat((Boolean) sut.getItem(2))
+                .isEqualTo(true);
+    }
+
+    @Test
+    public void whenGetItemWith3ThenReturnThird() {
+        assertThat((Double) sut.getItem(3))
                 .isEqualTo(13.49);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void whenGetItem4ThenThrowError() {
-        assertThat(sut.getItem(4))
+        assertThat((Object) sut.getItem(4))
                 .isNotNull();
-    }
-
-    @Test
-    public void whenSetItem0ThenReturnNewFirst() {
-        sut.setItem(15.89, 0);
-
-        assertThat(sut.getItem(0))
-                .isEqualTo(15.89);
-    }
-
-    @Test
-    public void whenSetItem1ThenReturnNewSecond() {
-        sut.setItem(5457474.54, 1);
-
-        assertThat(sut.getItem(1))
-                .isEqualTo(5457474.54);
-    }
-
-    @Test
-    public void whenSetItem2ThenReturnNewThird() {
-        sut.setItem(5457474.54, 2);
-
-        assertThat(sut.getItem(2))
-                .isEqualTo(5457474.54);
-    }
-
-    @Test
-    public void whenSetItem3ThenReturnNewThird() {
-        sut.setItem("test", 3);
-
-        assertThat(sut.getItem(3))
-                .isEqualTo("test");
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void whenSetItem4ThenThrowError() {
-        sut.setItem(5457474.54, 4);
     }
 
     @Test
@@ -139,5 +126,26 @@ public class Tuple4Test {
         assertThat(sut.equals(null)).isFalse();
     }
 
+    @Test
+    public void testHashCodeIsConsistent() {
+        int sutHash = sut.hashCode();
+
+        for (int ii = 0; ii < 1000; ii++) {
+            assertThat(sut.hashCode()).isEqualTo(sutHash);
+        }
+    }
+
+    @Test
+    public void testHashIdentityOnEqualObjects() {
+        Tuple4 newCopy = Tuple4.of("first", 16, true, 13.49);
+
+        assertThat(sut).isEqualTo(newCopy);
+        assertThat(sut.hashCode()).isEqualTo(newCopy.hashCode());
+    }
+
+    @Test
+    public void testToString() {
+        assertThat(sut.toString()).isEqualTo("Tuple4{first,16,true,13.49}");
+    }
 
 }

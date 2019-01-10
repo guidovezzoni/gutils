@@ -5,10 +5,10 @@ import com.guidovezzoni.gutils.common.Objects;
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class Tuple4<T0, T1, T2, T3> extends BaseTuple implements Tuple {
     private static final int ARITY = 4;
-    private T0 t0;
-    private T1 t1;
-    private T2 t2;
-    private T3 t3;
+    private final T0 t0;
+    private final T1 t1;
+    private final T2 t2;
+    private final T3 t3;
 
     public Tuple4(T0 t0, T1 t1, T2 t2, T3 t3) {
         this.t0 = t0;
@@ -61,29 +61,8 @@ public class Tuple4<T0, T1, T2, T3> extends BaseTuple implements Tuple {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> void setItem(T t, int pos) {
-        switch (pos) {
-            case 0:
-                this.t0 = (T0) t;
-                break;
-            case 1:
-                this.t1 = (T1) t;
-                break;
-            case 2:
-                this.t2 = (T2) t;
-                break;
-            case 3:
-                this.t3 = (T3) t;
-                break;
-            default:
-                throw new IndexOutOfBoundsException(String.valueOf(pos));
-        }
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
     public Tuple4<T0, T1, T2, T3> copy() {
-        return new Tuple4<>(t0, t1, t2, t3);
+        return Tuple4.of(t0, t1, t2, t3);
     }
 
     @Override

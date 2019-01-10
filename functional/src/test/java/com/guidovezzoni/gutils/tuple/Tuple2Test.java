@@ -17,41 +17,32 @@ public class Tuple2Test {
 
     @Test
     public void whenGetItem0ThenReturnFirst() {
-        assertThat(sut.getItem(0))
+        assertThat(sut.getItem0())
                 .isEqualTo("first");
     }
 
     @Test
     public void whenGetItem1ThenReturnSecond() {
-        assertThat(sut.getItem(1))
+        assertThat(sut.getItem1())
+                .isEqualTo(16);
+    }
+
+    @Test
+    public void whenGetItemWith0ThenReturnFirst() {
+        assertThat((String) sut.getItem(0))
+                .isEqualTo("first");
+    }
+
+    @Test
+    public void whenGetItemWith1ThenReturnSecond() {
+        assertThat((Integer) sut.getItem(1))
                 .isEqualTo(16);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void whenGetItem2ThenThrowError() {
-        assertThat(sut.getItem(2))
+        assertThat((Object) sut.getItem(2))
                 .isNotNull();
-    }
-
-    @Test
-    public void whenSetItem0ThenReturnNewFirst() {
-        sut.setItem(15.89, 0);
-
-        assertThat(sut.getItem(0))
-                .isEqualTo(15.89);
-    }
-
-    @Test
-    public void whenSetItem1ThenReturnNewSecond() {
-        sut.setItem(5457474.54, 1);
-
-        assertThat(sut.getItem(1))
-                .isEqualTo(5457474.54);
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void whenSetItem2ThenThrowError() {
-        sut.setItem(5457474.54, 2);
     }
 
     @Test

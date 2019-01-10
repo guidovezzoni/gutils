@@ -31,12 +31,14 @@ public class CachedDataSource<M, P> implements CacheDataSource<M, P> {
 
     @Override
     public Maybe<TimeStampedData<M>> get(P params) {
+        //TODO params is currently ignored
         Preconditions.checkArgument(params == null, "Params must be NULL");
         return isCacheValid() ? Maybe.just(cachedValue) : Maybe.empty();
     }
 
     @Override
     public Maybe<TimeStampedData<M>> getAndUpdate(P params, DataSource<M, P> cacheSource) {
+        //TODO params is currently ignored
         Preconditions.checkArgument(params == null, "Params must be NULL");
         if (isCacheValid()) {
             cacheSource.set(cachedValue);
