@@ -1,1 +1,1 @@
-include ':app', ':functional', ':datalayer', ':architecture'
+include ':app', ':functional', ':architecture'

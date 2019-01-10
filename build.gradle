@@ -27,7 +27,7 @@ task clean(type: Delete) {
 
 ext {
     // SDK versions
-    MIN_SDK_VERSION = 14  // TODO remove support and bring this down as low as possible
+    MIN_SDK_VERSION = 1  // TODO remove support and bring this down as low as possible
     TARGET_SDK_VERSION = 28
     ANDROID_COMPILE_SDK_VERSION = 28
 
